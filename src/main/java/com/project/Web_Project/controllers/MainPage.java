@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 //Main page
 @Controller
 @RequestMapping("/")
+//Saves user's session
+@SessionAttributes(value = "user")
 public class MainPage {
     @GetMapping
     public String mainPage(Model model, User user){
