@@ -5,13 +5,19 @@
     <title>Главная страница</title>
 </head>
 <body>
-<p th:text="'Приветствуем, '+ ${user.name}"></p>
-<br>
-<form action="reg">
-    <button>Зарегистрироваться</button>
-</form>
-<form action="aut">
-    <button>Авторизоваться</button>
-</form>
+
+<div th:unless="${user.isAuth}">
+    <p>Приветствуем, гость.</p>
+    <form action="reg">
+        <button>Зарегистрироваться</button>
+    </form>
+    <form action="aut">
+        <button>Авторизоваться</button>
+    </form>
+</div>
+<div th:if="${user.isAuth}">
+    <p th:text="'Приветствуем, '+ ${user.name}"></p>
+</div>
+
 </body>
 </html>
