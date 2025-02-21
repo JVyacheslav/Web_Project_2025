@@ -14,7 +14,12 @@ public class Registration {
     //base get method
     @GetMapping
     public String setForm(User user){
-        return "reg";
+        System.out.println(user.isAuth());
+        if(user.isAuth()){
+            return "redirect:/";
+        } else{
+            return "reg";
+        }
     }
     //post method, gets info from fields (reg.html) and puts to user object
     @PostMapping
