@@ -19,6 +19,7 @@ public class Registration {
 
     @PostMapping
     public String getForm(@ModelAttribute User user, Model model){
+        user.setAuth(true);
         System.out.println(user.toString());
         return "redirect:/";
     }
