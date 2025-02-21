@@ -16,7 +16,7 @@ public class Registration {
     public String setForm(User user){
         return "reg";
     }
-
+    //post method, gets info from fields (reg.html) and puts to user object
     @PostMapping
     public String getForm(@ModelAttribute User user, Model model){
         user.setAuth(true);
