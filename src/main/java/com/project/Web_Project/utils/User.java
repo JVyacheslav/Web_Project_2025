@@ -13,4 +13,5 @@ import org.springframework.stereotype.Component;
 public class User {
     public String name = "Гость";
     public String pass;
+    public boolean auth;
 }
