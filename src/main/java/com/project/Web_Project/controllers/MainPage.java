@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 //Saves user's session
 @SessionAttributes(value = "user")
 public class MainPage {
+    //base get method, spring 'autowire' user
     @GetMapping
     public String mainPage(User user){
         return "main";
