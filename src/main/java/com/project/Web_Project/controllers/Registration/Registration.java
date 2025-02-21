@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @RequestMapping("/reg")
 public class Registration {
+    //base get method
     @GetMapping
     public String setForm(User user){
         return "reg";
