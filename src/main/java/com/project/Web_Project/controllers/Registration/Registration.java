@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 //Registration class - there is base form for user object.
 @Controller
 @RequestMapping("/reg")
+@SessionAttributes(value = "user")
 public class Registration {
     //base get method
     @GetMapping
