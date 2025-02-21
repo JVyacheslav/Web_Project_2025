@@ -13,8 +13,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @SessionAttributes(value = "user")
 public class MainPage {
     @GetMapping
-    public String mainPage(Model model, User user){
-        model.addAttribute("user.name", user.getName());
+    public String mainPage(User user){
         return "main";
     }
 }
