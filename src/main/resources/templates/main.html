@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная страница</title>
+</head>
+<body>
+<p th:text="'Приветствуем, '+ ${user.name}"></p>
+<br>
+<form action="reg">
+    <button>Зарегистрироваться</button>
+</form>
+<form action="aut">
+    <button>Авторизоваться</button>
+</form>
+</body>
+</html>
