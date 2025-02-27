@@ -11,7 +11,10 @@ import org.springframework.stereotype.Component;
 @Setter
 @ToString
 public class User {
-    public String name;
+    public String username;
     public String pass;
+    public String email;
     public boolean auth;
+    public String registrationCode;
+    public String userInputCode;
 }

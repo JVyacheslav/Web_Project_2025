@@ -10,11 +10,15 @@
 <form method="post" th:object="${user}">
     <br>
     <p>Имя</p>
-    <input th:field="*{name}" placeholder="Имя">
+    <input th:field="*{username}" placeholder="Имя">
     <br>
     <p>Пароль</p>
     <input th:field="*{pass}" placeholder="Пароль">
+    <br>
+    <p>Email</p>
+    <input th:field="*{email}" placeholder="example@gmail.com">
     <button type="submit">Submit</button>
+    <p th:text="${valid}"></p>
 </form>
 </body>
 </html>
