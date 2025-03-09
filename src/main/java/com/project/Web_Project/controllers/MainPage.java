@@ -1,5 +1,6 @@
 package com.project.Web_Project.controllers;
 
+import com.project.Web_Project.interfaces.ControllerInterface;
 import com.project.Web_Project.utils.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,10 +11,10 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @RequestMapping("/")
 //Saves user's session
 @SessionAttributes(value = "user")
-public class MainPage {
+public class MainPage implements ControllerInterface {
     //base get method, spring 'autowire' user
-    @GetMapping
-    public String mainPage(User user){
+    @Override
+    public String setForm(User user) {
         return "main";
     }
 }

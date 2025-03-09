@@ -1,6 +1,7 @@
 package com.project.Web_Project.utils;
 
 
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -10,11 +11,22 @@ import org.springframework.stereotype.Component;
 @Getter
 @Setter
 @ToString
+@Entity
+@Table(name = "users")
 public class User {
-    public String username;
-    public String pass;
-    public String email;
-    public boolean auth;
-    public String registrationCode;
-    public String userInputCode;
+    @Column
+    private String username;
+    @Column
+    private String pass;
+    @Id
+    @Column
+    private String email;
+
+
+    @Transient
+    private boolean auth;
+    @Transient
+    private String Code;
+    @Transient
+    private String userInputCode;
 }

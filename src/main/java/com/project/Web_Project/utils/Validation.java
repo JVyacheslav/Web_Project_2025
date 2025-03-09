@@ -1,6 +1,8 @@
 package com.project.Web_Project.utils;
 
 
+import com.project.Web_Project.utils.actions.EmailConfirm;
+
 import javax.mail.*;
 
 public class Validation {
@@ -10,24 +12,23 @@ public class Validation {
             return "Некорректное имя пользователя";
         } else if(isInValidPass(user.getPass())){
             return "Некорректный пароль";
-        } else if (isInValidEmail(user.getEmail(), user)) {
+        } else if (isInValidEmail(user)) {
             return "Некорректная электронная почта";
         }
         return null;
     }
     private boolean isInValidName(String username){
-        return !(username.length()<21 && username.length()>0);
+        return !(username.length()<31 && username.length()>0);
     }
     private boolean isInValidPass(String pass){
-        return !(pass.length()<21 && pass.length()>0);
+        return !(pass.length()<21 && pass.length()>5);
     }
-    private boolean isInValidEmail(String email, User user) {
+    private boolean isInValidEmail(User user) {
         try {
-            new EmailSender(email, user);
+            new EmailConfirm(user);
             return false;
         } catch (MessagingException e) {
             return true;
         }
     }
-
 }
