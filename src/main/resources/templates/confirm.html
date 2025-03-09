@@ -5,17 +5,10 @@
     <title>Подтверждение email</title>
 </head>
 <body>
-<div th:unless="${user.isAuth}">
-    <div th:if="${user.registrationCode!=null}">
     <form method="post" th:object="${user}">
         <input th:field="*{userInputCode}">
         <button type="submit">Подтвердить</button>
     </form>
-        <p th:text="${validationEmailCode}"></p>
-    </div>
-    <div th:if="${user.registrationCode==null}">
-        <p>Ой, вас тут быть не должно... Сначала начните процесс регистрации!</p>
-    </div>
-</div>
+    <p th:text="${validationEmailCode}"></p>
 </body>
 </html>

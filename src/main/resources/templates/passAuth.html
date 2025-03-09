@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Авторизация</title>
+</head>
+<body>
+<p>Введите следующие данные, чтобы войти в аккаунт:</p>
+<form method="post" th:object="${user}">
+    <p>Email</p>
+    <input th:field="*{email}" placeholder="example@gmail.com">
+    <br>
+    <p>Пароль</p>
+    <input th:field="*{pass}" placeholder="Пароль">
+    <br>
+    <button type="submit">Войти</button>
+    <p th:text="${valid}"></p>
+</form>
+</body>
+</html>

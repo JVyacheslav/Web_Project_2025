@@ -1,5 +1,7 @@
 package com.project.Web_Project.controllers.Registration;
 
+import com.project.Web_Project.database.DatabaseManager;
+import com.project.Web_Project.interfaces.ControllerInterface;
 import com.project.Web_Project.utils.User;
 import com.project.Web_Project.utils.Validation;
 import org.springframework.stereotype.Controller;
@@ -11,10 +13,10 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @RequestMapping("/reg")
 @SessionAttributes(value = "user")
-public class Registration {
+public class Registration implements ControllerInterface {
     //base get method
-    @GetMapping
-    public String setForm(User user){
+    @Override
+    public String setForm(User user) {
         System.out.println(user.isAuth());
         if(user.isAuth()){
             return "redirect:/";
@@ -32,25 +34,33 @@ public class Registration {
             return "reg";
         }
         System.out.println(user.toString());
-        return "redirect:/reg/reg-final";
+        return "redirect:/reg/confirm";
     }
 
 
-    @GetMapping("/reg-final")
+    @GetMapping("/confirm")
     public String addEmail(User user, Model model){
-        if(user.isAuth()){
+        if(user.isAuth() || user.getRegistrationCode()==null){
             return "redirect:/";
         }
-        return "reg-final";
+        return "confirm";
     }
-    @PostMapping("/reg-final")
-    public String getEmailCode(@ModelAttribute User user, Model model){
+
+
+
+    @PostMapping("/confirm")
+    public String getEmailCode(@ModelAttribute User user, Model model, DatabaseManager databaseManager){
         System.out.println("User: " + user.getUserInputCode());
+
         if(user.getUserInputCode().equals(user.getRegistrationCode())){
-            user.setAuth(true);
-            return "redirect:/";
+
+            if(databaseManager.saveUser(user)) {
+                user.setAuth(true);
+                return "redirect:/";
+            }
+
         }
         model.addAttribute("validationEmailCode", "Некорректный код");
-        return "reg-final";
+        return "confirm";
     }
 }

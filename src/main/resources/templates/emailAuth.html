@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Авторизация через подтверждение email</title>
+</head>
+<body>
+<form method="post" th:object="${user}">
+    <p>Email</p>
+    <input th:field="*{email}" placeholder="example@gmail.com">
+    <br>
+    <button type="submit">Отправить письмо с кодом</button>
+    <br>
+    <p th:text="${valid}"></p>
+</form>
+</body>
+</html>
