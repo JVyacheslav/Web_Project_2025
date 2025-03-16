@@ -1,8 +1,8 @@
-package com.project.Web_Project.controllers.forms.Registration;
+package com.project.Web_Project.main_logic.base_controllers.forms.Registration;
 
 import com.project.Web_Project.database.DatabaseManager;
 import com.project.Web_Project.interfaces.PostControllerInterface;
-import com.project.Web_Project.utils.User;
+import com.project.Web_Project.dto.User;
 import com.project.Web_Project.utils.Validation;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,6 +28,7 @@ public class Registration implements PostControllerInterface {
     @Override
     public String getForm(@ModelAttribute User user, Model model, DatabaseManager databaseManager){
         String validation;
+        //checks if there is no registered user
         if(databaseManager.selectUser(user) == null) {
             validation = new Validation().setUpValidation(user);
             if (validation != null) {

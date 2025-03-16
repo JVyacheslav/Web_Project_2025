@@ -1,9 +1,8 @@
-package com.project.Web_Project.controllers.forms.Auth;
+package com.project.Web_Project.main_logic.base_controllers.forms.Auth;
 
 import com.project.Web_Project.database.DatabaseManager;
 import com.project.Web_Project.interfaces.PostControllerInterface;
-import com.project.Web_Project.utils.User;
-import com.project.Web_Project.utils.Validation;
+import com.project.Web_Project.dto.User;
 import com.project.Web_Project.utils.actions.EmailConfirm;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,13 +26,19 @@ public class EmailAuthentification implements PostControllerInterface {
     }
 
     @Override
-    public String getForm(@ModelAttribute User user, Model model, DatabaseManager databaseManager) throws MessagingException {
+    public String getForm(@ModelAttribute User user, Model model, DatabaseManager databaseManager) {
+        //checks user in database
         User realUser = databaseManager.selectUser(user);
         if(realUser == null){
             model.addAttribute("valid", "Ошибка, пользователя с такой почтой не существует...");
             return "emailAuth";
         } else {
-            new EmailConfirm(user);
+            try {
+                //sends email with confirm code
+                new EmailConfirm(user);
+            } catch (MessagingException e){
+                System.err.println(e);
+            }
             return "redirect:/auth/confirm";
         }
     }

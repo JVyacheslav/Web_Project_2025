@@ -1,9 +1,8 @@
-package com.project.Web_Project.controllers;
+package com.project.Web_Project.main_logic.base_controllers;
 
 import com.project.Web_Project.interfaces.ControllerInterface;
-import com.project.Web_Project.utils.User;
+import com.project.Web_Project.dto.User;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 //Main page

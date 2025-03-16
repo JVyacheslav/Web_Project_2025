@@ -1,13 +1,14 @@
-package com.project.Web_Project.controllers.forms;
+package com.project.Web_Project.main_logic.base_controllers.forms;
 
 import com.project.Web_Project.database.DatabaseManager;
 import com.project.Web_Project.interfaces.PostControllerInterface;
-import com.project.Web_Project.utils.User;
+import com.project.Web_Project.dto.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
+
 
 @SessionAttributes(value = "user")
 @Controller
@@ -27,8 +28,9 @@ public class ConfirmForm implements PostControllerInterface {
         System.out.println("User: " + user.getUserInputCode());
 
         if(user.getUserInputCode().equals(user.getCode())){
+            //checks user
             User realUser = databaseManager.selectUser(user);
-            if(realUser != null){
+            if(realUser != null) {
                 user.setAuth(true);
                 user.setUsername(realUser.getUsername());
                 user.setPass(realUser.getPass());
