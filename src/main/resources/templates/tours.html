@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Поиск туров</title>
+</head>
+<body>
+    <div th:each="tour : ${tours}">
+        <p th:text="${tour.tourName}"></p>
+        <br>
+        <p th:text="${tour.tourDesc}"></p>
+        <br>
+        <p th:text="${tour.price}"></p>
+        <form method="post">
+            <button type="submit">Оформить</button>
+        </form>
+        <p>-------------------------------</p>
+    </div>
+    <form>
+        <input type="hidden" name="page" th:value="${page}+1">
+        <button type="submit">Следующая страница</button>
+    </form>
+    <form>
+        <input type="hidden" name="page" value="1">
+        <button type="submit">Первая страница</button>
+    </form>
+    <form>
+        <input type="hidden" name="page" th:value="${page}-1">
+        <button type="submit">Предыдущая страница</button>
+    </form>
+</body>
+</html>
