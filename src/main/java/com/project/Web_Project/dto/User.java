@@ -1,4 +1,5 @@
-package com.project.Web_Project.utils;
+package com.project.Web_Project.dto;
+
 
 
 import jakarta.persistence.*;

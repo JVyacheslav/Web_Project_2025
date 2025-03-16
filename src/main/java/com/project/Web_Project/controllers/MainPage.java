@@ -1,4 +1,4 @@
-package com.project.Web_Project.main_logic.base_controllers;
+package com.project.Web_Project.controllers;
 
 import com.project.Web_Project.interfaces.ControllerInterface;
 import com.project.Web_Project.dto.User;

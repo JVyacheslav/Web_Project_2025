@@ -1,9 +1,10 @@
-package com.project.Web_Project.main_logic.base_controllers.forms.Registration;
+package com.project.Web_Project.controllers;
 
-import com.project.Web_Project.database.DatabaseManager;
+import com.project.Web_Project.database.UserDatabaseManager;
 import com.project.Web_Project.interfaces.PostControllerInterface;
 import com.project.Web_Project.dto.User;
-import com.project.Web_Project.utils.Validation;
+import com.project.Web_Project.service.Validation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,16 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/reg")
 @SessionAttributes(value = "user")
 public class Registration implements PostControllerInterface {
+    private Validation validation;
+    @Autowired
+    public void setValidation(Validation validation){
+        this.validation=validation;
+    }
+    private UserDatabaseManager userDatabaseManager;
+    @Autowired
+    public void setDbManager(UserDatabaseManager userDatabaseManager){
+        this.userDatabaseManager = userDatabaseManager;
+    }
     //base get method
     @Override
     public String setForm(User user) {
@@ -26,19 +37,19 @@ public class Registration implements PostControllerInterface {
     }
     //post method, gets info from fields (reg.html) and puts to user object
     @Override
-    public String getForm(@ModelAttribute User user, Model model, DatabaseManager databaseManager){
-        String validation;
+    public String getForm(@ModelAttribute User user, Model model){
+        String validationText;
         //checks if there is no registered user
-        if(databaseManager.selectUser(user) == null) {
-            validation = new Validation().setUpValidation(user);
-            if (validation != null) {
+        if(userDatabaseManager.selectUser(user.getEmail()) == null) {
+            validationText = validation.setUpValidation(user);
+            if (validationText != null) {
                 System.out.println(user.toString());
-                model.addAttribute("valid", validation);
+                model.addAttribute("valid", validationText);
                 return "reg";
             }
         } else{
-            validation = "Пользователь с этой почтой уже зарегистрирован.";
-            model.addAttribute("valid", validation);
+            validationText = "Пользователь с этой почтой уже зарегистрирован.";
+            model.addAttribute("valid", validationText);
             return "reg";
         }
         System.out.println(user.toString());

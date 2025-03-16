@@ -8,5 +8,4 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ComponentScan("com.project.Web_Project")
 public class Config {
-
 }

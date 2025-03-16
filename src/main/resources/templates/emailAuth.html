@@ -7,7 +7,7 @@
 <body>
 <form method="post" th:object="${user}">
     <p>Email</p>
-    <input th:field="*{email}" placeholder="example@gmail.com">
+    <input type="email" th:field="*{email}" placeholder="example@gmail.com">
     <br>
     <button type="submit">Отправить письмо с кодом</button>
     <br>

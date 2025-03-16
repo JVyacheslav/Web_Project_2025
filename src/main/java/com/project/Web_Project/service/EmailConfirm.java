@@ -1,6 +1,5 @@
-package com.project.Web_Project.utils.actions;
+package com.project.Web_Project.service;
 
-import com.project.Web_Project.utils.EmailSender;
 import com.project.Web_Project.dto.User;
 
 import javax.mail.Message;

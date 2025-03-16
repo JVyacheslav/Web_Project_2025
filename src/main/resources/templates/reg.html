@@ -16,7 +16,7 @@
     <input th:field="*{pass}" placeholder="Пароль">
     <br>
     <p>Email</p>
-    <input th:field="*{email}" placeholder="example@gmail.com">
+    <input type="email" th:field="*{email}" placeholder="example@gmail.com">
     <button type="submit">Зарегистрироваться</button>
     <p th:text="${valid}"></p>
 </form>

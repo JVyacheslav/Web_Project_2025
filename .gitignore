@@ -31,5 +31,9 @@ build/
 
 ### VS Code ###
 .vscode/
-/src/main/java/com/project/Web_Project/utils/Secret.java
-/src/main/resources/hibernate.cfg.xml
+
+
+
+
+/src/main/java/com/project/Web_Project/service/Secret.java
+/src/main/resources/application.properties

@@ -1,11 +1,12 @@
 package com.project.Web_Project.interfaces;
 
-import com.project.Web_Project.utils.User;
+import com.project.Web_Project.dto.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+//Interface for all controllers with GET Request
 @Controller
 public interface ControllerInterface {
     @GetMapping
-    public String setForm(User user);
+    String setForm(User user);
 }

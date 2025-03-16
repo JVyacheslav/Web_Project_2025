@@ -17,6 +17,10 @@
 </div>
 <div th:if="${user.isAuth}">
     <p th:text="'Приветствуем, '+ ${user.username}"></p>
+    <form action="searchTour">
+        <input type="hidden" name="page" value="1">
+        <button type="submit">Найти тур</button>
+    </form>
 </div>
 
 </body>

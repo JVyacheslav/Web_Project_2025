@@ -8,7 +8,7 @@
 <p>Авторизация через пароль и email</p>
 <form method="post" th:object="${user}">
     <p>Email</p>
-    <input th:field="*{email}" placeholder="example@gmail.com">
+    <input type="email" th:field="*{email}" placeholder="example@gmail.com">
     <br>
     <p>Пароль</p>
     <input th:field="*{pass}" placeholder="Пароль">

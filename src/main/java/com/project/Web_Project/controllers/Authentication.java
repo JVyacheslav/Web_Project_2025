@@ -1,9 +1,10 @@
-package com.project.Web_Project.main_logic.base_controllers.forms.Auth;
+package com.project.Web_Project.controllers;
 
 
-import com.project.Web_Project.database.DatabaseManager;
+import com.project.Web_Project.database.UserDatabaseManager;
 import com.project.Web_Project.interfaces.PostControllerInterface;
 import com.project.Web_Project.dto.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -14,10 +15,15 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @Controller
 @RequestMapping("/auth")
 public class Authentication implements PostControllerInterface {
+    private UserDatabaseManager userDatabaseManager;
+    @Autowired
+    public void setDbManager(UserDatabaseManager userDatabaseManager){
+        this.userDatabaseManager = userDatabaseManager;
+    }
     @Override
-    public String getForm(@ModelAttribute User user, Model model, DatabaseManager databaseManager){
+    public String getForm(@ModelAttribute User user, Model model){
         //checks user
-        User realUser = databaseManager.selectUser(user);
+        User realUser = userDatabaseManager.selectUser(user.getEmail());
         if(realUser != null) {
             if (realUser.getPass().equals(user.getPass())) {
                 user.setAuth(true);
