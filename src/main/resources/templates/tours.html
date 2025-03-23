@@ -9,9 +9,8 @@
         <p th:text="${tour.tourName}"></p>
         <br>
         <p th:text="${tour.tourDesc}"></p>
-        <br>
-        <p th:text="${tour.price}"></p>
-        <form method="post">
+        <form action="searchTour/makingOrder">
+            <input type="hidden" name="tourId" th:value="${tour.id}">
             <button type="submit">Оформить</button>
         </form>
         <p>-------------------------------</p>

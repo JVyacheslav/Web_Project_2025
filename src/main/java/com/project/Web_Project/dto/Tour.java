@@ -1,10 +1,7 @@
 package com.project.Web_Project.dto;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
@@ -12,14 +9,14 @@ import lombok.Setter;
 @Table(name = "tours")
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class Tour {
     @Id
     @Column
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     @Column(name = "tourname")
     private String tourName;
     @Column(name = "tourdesc")
     private String tourDesc;
-    @Column
-    private int price;
 }

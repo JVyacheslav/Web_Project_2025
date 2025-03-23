@@ -3,7 +3,7 @@ package com.project.Web_Project.controllers;
 import com.project.Web_Project.database.UserDatabaseManager;
 import com.project.Web_Project.interfaces.PostControllerInterface;
 import com.project.Web_Project.dto.User;
-import com.project.Web_Project.service.Validation;
+import com.project.Web_Project.service.validation.UserValidation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,19 +15,15 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/reg")
 @SessionAttributes(value = "user")
 public class Registration implements PostControllerInterface {
-    private Validation validation;
+
     @Autowired
-    public void setValidation(Validation validation){
-        this.validation=validation;
-    }
+    private UserValidation userValidation;
+
+    @Autowired
     private UserDatabaseManager userDatabaseManager;
-    @Autowired
-    public void setDbManager(UserDatabaseManager userDatabaseManager){
-        this.userDatabaseManager = userDatabaseManager;
-    }
     //base get method
     @Override
-    public String setForm(User user) {
+    public String setForm(User user, Model model) {
         System.out.println(user.isAuth());
         if(user.isAuth()){
             return "redirect:/";
@@ -41,7 +37,7 @@ public class Registration implements PostControllerInterface {
         String validationText;
         //checks if there is no registered user
         if(userDatabaseManager.selectUser(user.getEmail()) == null) {
-            validationText = validation.setUpValidation(user);
+            validationText = userValidation.setUpValidation(user);
             if (validationText != null) {
                 System.out.println(user.toString());
                 model.addAttribute("valid", validationText);

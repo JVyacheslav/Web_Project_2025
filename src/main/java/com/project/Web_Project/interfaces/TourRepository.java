@@ -1,4 +1,4 @@
-package com.project.Web_Project.database;
+package com.project.Web_Project.interfaces;
 
 import com.project.Web_Project.dto.Tour;
 import org.springframework.data.jpa.repository.JpaRepository;

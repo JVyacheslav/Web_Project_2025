@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Настройка тура</title>
+</head>
+<body>
+<form method="post">
+    <p>Количество взрослых (не больше 10)</p>
+    <input type="number" min="1" max="10" th:field="*{reservation.numOfAdults}">
+    <p>Количество детей</p>
+    <input type="number" min="0" max="10" th:field="*{reservation.numOfChildren}">
+    <p>Бюджет на человека</p>
+    <input type="number" min="5000" th:field="*{reservation.price}">
+    <p>Количество дней</p>
+    <input type="number" min="3" max="30" th:field="*{reservation.numOfDays}">
+    <p>Тип размещения</p>
+    <select th:field="*{reservation.accommodation}">
+        <option value="hotel">Отель</option>
+        <option value="apartments">Апартаменты</option>
+        <option value="hostel">Хостел</option>
+    </select>
+    <p>Дата отправки</p>
+    <input th:type="date" th:min="${minDate}" th:max="${maxDate}" th:field="*{reservation.date}">
+    <p>Город отправки</p>
+    <input th:field="*{reservation.town}">
+    <button type="submit">Оставить заявку</button>
+</form>
+<p th:text="${validation}"></p>
+</body>
+</html>

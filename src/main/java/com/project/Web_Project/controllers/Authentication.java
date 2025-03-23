@@ -15,11 +15,10 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @Controller
 @RequestMapping("/auth")
 public class Authentication implements PostControllerInterface {
-    private UserDatabaseManager userDatabaseManager;
     @Autowired
-    public void setDbManager(UserDatabaseManager userDatabaseManager){
-        this.userDatabaseManager = userDatabaseManager;
-    }
+    private UserDatabaseManager userDatabaseManager;
+
+
     @Override
     public String getForm(@ModelAttribute User user, Model model){
         //checks user
@@ -36,7 +35,7 @@ public class Authentication implements PostControllerInterface {
     }
 
     @Override
-    public String setForm(User user) {
+    public String setForm(User user, Model model) {
         if(user.isAuth()){
             return "redirect:/";
         } else{

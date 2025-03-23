@@ -21,6 +21,19 @@
         <input type="hidden" name="page" value="1">
         <button type="submit">Найти тур</button>
     </form>
+    <p th:text="${reservationMessage}"></p>
+    <div th:each="userReservation : ${userReservations}">
+        <p th:text="'Название тура: '+${userReservation.tourName}"></p>
+        <p th:text="'Цена: '+${userReservation.price}"></p>
+        <p th:text="'Количество взрослых: '+${userReservation.numOfAdults}"></p>
+        <p th:text="'Количество детей: '+${userReservation.numOfChildren}"></p>
+        <p th:text="'Начало тура: '+${userReservation.date}"></p>
+        <p th:text="'Количество дней в туре: '+${userReservation.numOfDays}"></p>
+        <p th:text="'Откуда: '+${userReservation.town}"></p>
+        <p th:text="'Статус заявки: '+${userReservation.status}"></p>
+        <p>=========================================================</p>
+
+    </div>
 </div>
 
 </body>

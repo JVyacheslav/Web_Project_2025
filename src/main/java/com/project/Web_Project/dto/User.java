@@ -22,6 +22,8 @@ public class User {
     @Id
     @Column
     private String email;
+    @Column
+    private String role = "user";
 
 
     @Transient
